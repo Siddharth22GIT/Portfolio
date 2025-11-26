@@ -50,7 +50,7 @@ export const projects: Project[] = [
     description:
       'A Flask web application for companies to track, manage, and visualize their carbon footprint data.',
     tech: ['Flask', 'Python', 'Bootstrap', 'SQLite'],
-    demoUrl: 'https://carbontracker-20ya.onrender.com/',
+    demoUrl: 'https://carbfoot.vercel.app/',
   },
   {
     title: 'Creator Studio',
