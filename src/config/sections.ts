@@ -1,11 +1,15 @@
-export enum SectionId {
-  Hero = 'hero',
-  About = 'about',
-  Tech = 'tech',
-  Projects = 'projects',
-  Creative = 'creative',
-  Contact = 'contact',
-}
+const SectionId = {
+  Hero: 'hero',
+  About: 'about',
+  Tech: 'tech',
+  Projects: 'projects',
+  Creative: 'creative',
+  Contact: 'contact',
+} as const;
+
+type SectionId = typeof SectionId[keyof typeof SectionId];
+
+export { SectionId };
 
 export const sections = [
   { id: SectionId.Hero, label: 'Home' },
