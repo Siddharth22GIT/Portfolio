@@ -9,7 +9,7 @@ export const profile = {
 
 export const about = {
   paragraph:
-    "I'm a full-stack developer in the making, building modern, high-performance apps with the MERN stack, and developing scalable backend systems using Node.js and Flask. I write efficient in C++ and Python, backed by strong DSA and software engineering fundamentals.\n\nBeyond development, I bring creative and strategic edge through DaVinci Resolve video editing and Google Ads digital marketing, blending tech, design, and growth into one skillset.",
+    "I'm a full-stack developer in the making, building modern, high-performance apps with the MERN stack, and developing scalable backend systems using Node.js and Flask. I write efficient code in C++ and Python, backed by strong DSA and software engineering fundamentals.\n\nBeyond development, I bring creative and strategic edge through DaVinci Resolve video editing and Google Ads digital marketing, blending tech, design, and growth into one skillset.",
   quickInfo: [
     { label: 'Location', value: 'India' },
     { label: 'Education', value: 'B.Tech CSE' },
