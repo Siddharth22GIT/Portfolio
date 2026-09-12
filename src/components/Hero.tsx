@@ -33,7 +33,7 @@ export const Hero: React.FC<HeroProps> = ({ id }) => {
 
           <div className="space-y-4">
             <p className="text-sm font-medium uppercase tracking-[0.28em] text-slate-500 dark:text-slate-400">
-              Software Developer • Full Stack Learner
+              Software Developer • ML • LLMs
             </p>
             <h1 className="text-balance text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl sm:leading-tight md:text-6xl dark:text-slate-50">
               {profile.name}
@@ -61,7 +61,7 @@ export const Hero: React.FC<HeroProps> = ({ id }) => {
           <div className="flex flex-wrap gap-4 text-xs text-slate-500 dark:text-slate-400">
             <span className="inline-flex items-center gap-1 rounded-full bg-white/70 px-3 py-1 shadow-sm backdrop-blur dark:bg-slate-900/70">
               <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
-              React, Node.js, Flask
+              NextJS, React, Node.js, Flask, FastAPI
             </span>
             <span className="inline-flex items-center gap-1 rounded-full bg-white/70 px-3 py-1 shadow-sm backdrop-blur dark:bg-slate-900/70">
               DaVinci Resolve • Motion Design
@@ -108,9 +108,9 @@ export const Hero: React.FC<HeroProps> = ({ id }) => {
                       Backend
                     </p>
                     <p className="mt-1 text-[11px] leading-relaxed text-slate-600 dark:text-slate-200">
-                      Node.js • Express
+                      Node.js • Express • NextJS
                       <br />
-                      Python • Flask
+                      Python • Flask • FastAPI
                     </p>
                   </div>
                   <div className="rounded-2xl bg-slate-100/90 p-3 dark:bg-slate-900/70">
@@ -129,7 +129,7 @@ export const Hero: React.FC<HeroProps> = ({ id }) => {
               <div className="flex items-center justify-between text-[11px] text-slate-600 dark:text-slate-200">
                 <span>DaVinci Resolve • Motion</span>
                 <span className="rounded-full bg-slate-900 px-2 py-1 text-[10px] font-medium text-slate-50 dark:bg-slate-50 dark:text-slate-900">
-                  Clean • Precise • Intentional
+                  Clean • Precise
                 </span>
               </div>
             </div>
