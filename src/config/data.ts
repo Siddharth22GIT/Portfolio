@@ -2,14 +2,14 @@ import { SectionId } from './sections'
 
 export const profile = {
   name: 'Siddharth Mishra',
-  title: 'Software Developer • Full Stack Learner',
+  title: 'Software Developer • ML • LLMs',
   tagline:
-    'I build clean, modern web applications using React, Node.js, and Flask.',
+    'Developer by day, Creator by night.',
 }
 
 export const about = {
   paragraph:
-    "I'm a full-stack developer in the making, building modern, high-performance apps with the MERN stack, and developing scalable backend systems using Node.js and Flask. I write efficient code in C++ and Python, backed by strong DSA and software engineering fundamentals.\n\nBeyond development, I bring creative and strategic edge through DaVinci Resolve video editing and Google Ads digital marketing, blending tech, design, and growth into one skillset.",
+    "I'm a Software dev, building modern, high-performance apps and developing scalable backend systems.\n\nBeyond development, I run a developers community of over 10,000+ CS students on Instagram.",
   quickInfo: [
     { label: 'Location', value: 'India' },
     { label: 'Education', value: 'B.Tech CSE' },
@@ -25,15 +25,19 @@ export const techStack = {
   },
   backend: {
     title: 'Backend',
-    items: ['Node.js (Express)', 'Python (Flask)'],
+    items: ['Node.js (Express)', 'NextJS', 'Python (Flask)', 'Python(FastAPI)'],
+  },
+  ML: {
+    title: 'ML Stack',
+    items: ['XGBoost','Regression','OpenCV','NumPy','Pandas','Scikit','Matplotlib']
   },
   core: {
     title: 'Core CS',
-    items: ['C', 'C++', 'Python', 'Data Structures & Algorithms', 'SQL'],
+    items: ['C', 'C++','Java', 'Python', 'Data Structures & Algorithms', 'SQL'],
   },
   tools: {
     title: 'Tools',
-    items: ['Git', 'GitHub', 'VS Code', 'Postman'],
+    items: ['Git', 'GitHub', 'VS Code', 'Postman', 'Docker'],
   },
 }
 
@@ -87,7 +91,7 @@ export const contactLinks = {
   email: 'mailto:siddharthmishra10e@gmail.com',
   github: 'https://github.com/Siddharth22GIT',
   linkedin: 'https://www.linkedin.com/in/-siddharthmishra/',
-  x: 'https://x.com/SiddharthM36946',
+  x: 'https://x.com/sidmishrx',
 }
 
 export const navTargets: { id: SectionId; label: string }[] = [
