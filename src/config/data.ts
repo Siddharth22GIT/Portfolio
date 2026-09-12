@@ -37,7 +37,7 @@ export const techStack = {
   },
   tools: {
     title: 'Tools',
-    items: ['Git', 'GitHub', 'VS Code', 'Postman', 'Docker'],
+    items: ['Git', 'GitHub', 'VS Code', 'Postman', 'Docker', 'n8n'],
   },
 }
 
