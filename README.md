@@ -1,1 +1,1 @@
-This has everything what I do. Feel free to check it out ✌️
+This has everything that I do. Feel free to check it out ✌️
