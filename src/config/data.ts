@@ -14,9 +14,9 @@ export const profile = {
 
 export const about = {
   paragraph:
-    "I'm a Computer Science & Engineering undergraduate at Lovely Professional University (CGPA: 8.22) focused on full-stack development, real-time systems, and accessible UI engineering.\n\nBeyond building products like IPChat, Unravel, and Where's My Bus, I contribute to major open-source projects and run @gotocodes—producing technical content on full-stack development, DSA, and career guidance for a 10K+ developer community.",
+    "I'm a Computer Science & Engineering undergraduate at Lovely Professional University focused on full-stack development, real-time systems, and accessible UI engineering.\n\nBeyond building products like IPChat, Unravel, and Where's My Bus, I contribute to major open-source projects and run @gotocodes—producing technical content on full-stack development, DSA, and career guidance for a 10K+ developer community.",
   quickInfo: [
-    { label: 'Education', value: 'B.Tech CSE • LPU (8.22)' },
+    { label: 'Education', value: 'B.Tech CSE • LPU' },
     { label: 'Focus', value: 'Full Stack & Real-Time Systems' },
     { label: 'Open Source', value: 'Cockpit & React-Bootstrap' },
     { label: 'Community', value: '@gotocodes (10K+ Devs)' },
@@ -242,7 +242,7 @@ export const education: EducationItem[] = [
   {
     institution: 'Lovely Professional University, Punjab, India',
     degree: 'Bachelor of Technology - Computer Science and Engineering',
-    score: 'CGPA: 8.22',
+    score: '',
     period: '2024 - 2028',
   },
   {

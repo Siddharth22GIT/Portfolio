@@ -1,12 +1,15 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { profile } from '../config/data'
+import { profile, projects } from '../config/data'
+import { SectionId } from '../config/sections'
 
 type HeroProps = {
   id: string
 }
 
 export const Hero: React.FC<HeroProps> = ({ id }) => {
+  const featured = projects[0]
+
   const scrollTo = (targetId: string) => {
     const el = document.getElementById(targetId)
     if (!el) return
@@ -16,130 +19,153 @@ export const Hero: React.FC<HeroProps> = ({ id }) => {
   return (
     <section
       id={id}
-      className="relative mb-20 flex min-h-[72vh] items-center"
       aria-label="Hero"
+      className="relative overflow-hidden bg-[#0a0a0a] text-white"
     >
-      <motion.div
-        initial={{ opacity: 0, y: 32 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: 'easeOut' }}
-        className="grid w-full gap-10 md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] md:items-center"
+      {/* Architectural grid */}
+      <div
+        aria-hidden
+        className="bg-arch-grid-dark pointer-events-none absolute inset-0"
+      />
+
+      {/* Giant background watermark */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-6 flex select-none justify-center overflow-hidden"
       >
-        <div className="space-y-8">
-          <div className="inline-flex items-center gap-2 rounded-2xl border border-white/60 bg-white/70 px-3 py-1 text-xs font-medium text-slate-600 shadow-sm backdrop-blur dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-300">
-            <span className="h-2 w-2 rounded-full bg-emerald-400" />
-            <span>{profile.status}</span>
-          </div>
+        <span className="font-display text-[17vw] font-bold uppercase leading-none tracking-[-0.05em] text-white/[0.06]">
+          SIDDHARTH
+        </span>
+      </div>
 
-          <div className="space-y-4">
-            <p className="text-sm font-medium uppercase tracking-[0.28em] text-slate-500 dark:text-slate-400">
-              {profile.title}
-            </p>
-            <h1 className="text-balance text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl sm:leading-tight md:text-6xl dark:text-slate-50">
-              {profile.name}
-            </h1>
-            <p className="max-w-xl text-balance text-sm leading-relaxed text-slate-600 sm:text-base dark:text-slate-300">
-              {profile.tagline}
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-3">
-            <button
-              onClick={() => scrollTo('projects')}
-              className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-tr from-brand-500 to-sky-400 px-5 py-2.5 text-sm font-semibold text-white shadow-soft-lg transition hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50 dark:focus-visible:ring-offset-slate-950"
-            >
-              View Projects
-            </button>
-            <button
-              onClick={() => scrollTo('contact')}
-              className="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white/70 px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm backdrop-blur transition hover:border-slate-300 hover:bg-white dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-50 dark:hover:border-slate-500 dark:hover:bg-slate-900"
-            >
-              Contact Me
-            </button>
-          </div>
-
-          <div className="flex flex-wrap gap-3 text-xs text-slate-500 dark:text-slate-400">
-            {profile.badges.map((badge, index) => (
-              <span
-                key={badge}
-                className="inline-flex items-center gap-1.5 rounded-full bg-white/70 px-3 py-1 shadow-sm backdrop-blur dark:bg-slate-900/70"
-              >
-                {index === 0 && (
-                  <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
-                )}
-                {badge}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 16 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.1 }}
-          className="relative mx-auto h-[320px] w-full max-w-sm"
-        >
-          <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-white/80 via-slate-50/60 to-slate-100/40 shadow-soft backdrop-blur-xl ring-1 ring-white/60 dark:from-slate-900/70 dark:via-slate-900/40 dark:to-slate-900/10 dark:ring-slate-700/80" />
-          <div className="absolute inset-[1px] overflow-hidden rounded-[2rem]">
-            <div className="absolute -inset-10 bg-[radial-gradient(circle_at_0_0,#4b6bff30,transparent_60%),radial-gradient(circle_at_100%_0,#22c55e26,transparent_55%),radial-gradient(circle_at_0_100%,#38bdf826,transparent_55%),radial-gradient(circle_at_100%_100%,#f9731626,transparent_60%)] opacity-90 dark:opacity-80" />
-            <div className="relative flex h-full flex-col justify-between rounded-[2rem] bg-white/90 p-6 text-slate-900 shadow-soft dark:bg-slate-950/75 dark:text-slate-50">
-              <div className="flex items-center justify-between">
-                <div className="space-y-1">
-                  <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-500 dark:text-slate-300">
-                    Snapshot
-                  </p>
-                  <p className="text-sm font-semibold text-slate-900 dark:text-slate-50">
-                    Full Stack &amp; Open Source
-                  </p>
-                </div>
-                <div className="flex gap-2">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-slate-900 text-xs font-semibold text-white shadow-soft">
-                    TS
-                  </span>
-                  <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-slate-800 text-xs font-semibold text-white shadow-soft">
-                    JS
-                  </span>
-                </div>
+      <div className="relative mx-auto max-w-[1440px] px-4 pb-10 pt-8 sm:px-6 md:px-12 md:pb-16 md:pt-14">
+        <div className="grid items-end gap-8 lg:min-h-[78vh] lg:grid-cols-[1.05fr_1fr_0.85fr] lg:gap-10">
+          {/* Left editorial column */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, ease: 'easeOut' }}
+            className="z-10 flex flex-col justify-between space-y-6 pb-1 sm:space-y-10"
+          >
+            <div className="max-w-xs space-y-3">
+              <div className="inline-flex items-center gap-2 border border-white/20 bg-white/5 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-neutral-300">
+                <span className="h-1.5 w-1.5 bg-white" />
+                <span>Open to Internships</span>
               </div>
+              <p className="text-[11px] font-medium uppercase leading-relaxed tracking-[0.08em] text-neutral-300 sm:text-xs">
+                I BUILD SCALABLE FULL-STACK SYSTEMS, REAL-TIME PLATFORMS, AND
+                ACCESSIBLE OPEN-SOURCE INTERFACES.
+              </p>
+            </div>
 
-              <div className="space-y-3">
-                <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-slate-500 dark:text-slate-300">
-                  CORE STACK
-                </p>
-                <div className="grid grid-cols-2 gap-3 text-xs text-slate-700 dark:text-slate-100/90">
-                  <div className="rounded-2xl bg-slate-100/90 p-3 dark:bg-slate-900/70">
-                    <p className="text-[11px] font-medium text-slate-700 dark:text-slate-200">
-                      Backend &amp; Data
-                    </p>
-                    <p className="mt-1 text-[11px] leading-relaxed text-slate-600 dark:text-slate-200">
-                      Node.js • Express • Flask
-                      <br />
-                      Socket.IO • MongoDB • SQL
-                    </p>
-                  </div>
-                  <div className="rounded-2xl bg-slate-100/90 p-3 dark:bg-slate-900/70">
-                    <p className="text-[11px] font-medium text-slate-700 dark:text-slate-200">
-                      Frontend &amp; CS
-                    </p>
-                    <p className="mt-1 text-[11px] leading-relaxed text-slate-600 dark:text-slate-200">
-                      React • Next.js • Tailwind
-                      <br />
-                      C++ • Java • Python
-                    </p>
-                  </div>
-                </div>
+            <div>
+              <p className="mb-1.5 text-xs font-medium tracking-[0.18em] text-neutral-400">
+                ©2026
+              </p>
+              <h1 className="font-display text-[2.65rem] font-bold uppercase leading-[0.92] tracking-[-0.04em] text-white sm:text-6xl xl:text-[5.5rem]">
+                SIDDHARTH
+                <span className="block text-neutral-400">MISHRA</span>
+              </h1>
+              <p className="mt-3 text-[11px] uppercase tracking-[0.16em] text-neutral-400 sm:mt-4 sm:text-xs sm:tracking-[0.2em]">
+                {profile.title}
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Center portrait (Polaroid frame) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.75, ease: 'easeOut' }}
+            className="relative mx-auto flex w-full max-w-[360px] items-end justify-center self-end sm:max-w-[400px]"
+          >
+            <div className="w-full border border-white/25 bg-white p-2.5 text-[#0a0a0a]">
+              <div className="relative aspect-[4/4.3] w-full overflow-hidden bg-neutral-900">
+                <img
+                  src="/siddharth.jpg"
+                  alt="Siddharth Mishra"
+                  className="h-full w-full object-cover object-center grayscale contrast-110 transition duration-700 hover:grayscale-0"
+                />
               </div>
-
-              <div className="flex items-center justify-between text-[11px] text-slate-600 dark:text-slate-200">
-                <span>@gotocodes • 10K+ Devs</span>
-                <span className="rounded-full bg-slate-900 px-2 py-1 text-[10px] font-medium text-slate-50 dark:bg-slate-50 dark:text-slate-900">
-                  SIH Winner
-                </span>
+              <div className="mt-2.5 flex items-center justify-between px-1 pb-0.5 text-[10px] font-semibold uppercase tracking-[0.1em] sm:text-[11px] sm:tracking-[0.12em]">
+                <span>✦ @gotocodes</span>
+                <span className="text-neutral-500">/LPU • B.Tech CSE</span>
               </div>
             </div>
+          </motion.div>
+
+          {/* Right featured project + BOTHER ME button */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, ease: 'easeOut', delay: 0.1 }}
+            className="z-10 flex flex-col items-stretch justify-between gap-5 sm:items-end sm:gap-8 lg:h-full lg:py-4"
+          >
+            {/* Featured work card */}
+            <a
+              href={featured.demoUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="group w-full border border-white/25 bg-white p-2.5 text-[#0a0a0a] transition hover:-translate-y-1 sm:max-w-[260px]"
+            >
+              <div className="flex aspect-[16/9] flex-col justify-between bg-[#0a0a0a] p-4 text-white sm:aspect-[4/3]">
+                <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.18em] text-neutral-400">
+                  <span>Featured</span>
+                  <span>{featured.date}</span>
+                </div>
+                <div>
+                  <p className="font-display text-2xl font-bold uppercase tracking-tight">
+                    {featured.title}
+                  </p>
+                  <p className="mt-1 text-[11px] text-neutral-300">
+                    600K+ Reel views • AES-256-GCM
+                  </p>
+                </div>
+              </div>
+              <div className="mt-2.5 flex items-center justify-between px-1 text-[11px] font-semibold uppercase tracking-[0.12em]">
+                <span>✦ {featured.title}</span>
+                <span className="text-neutral-500 transition-transform group-hover:translate-x-0.5">
+                  /Live ↗
+                </span>
+              </div>
+            </a>
+
+            {/* BOTHER ME button */}
+            <button
+              type="button"
+              onClick={() => scrollTo(SectionId.Contact)}
+              className="group flex w-full items-center justify-between border border-white/25 bg-neutral-950/95 p-3 pl-5 text-left transition hover:border-white sm:max-w-[260px]"
+            >
+              <span className="font-display text-sm font-bold uppercase tracking-[0.18em] text-white">
+                BOTHER ME
+              </span>
+              <span className="flex h-10 w-10 items-center justify-center bg-white text-sm font-bold text-[#0a0a0a] transition-transform group-hover:translate-x-0.5">
+                →
+              </span>
+            </button>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Monochrome tech/open-source bar at bottom of hero */}
+      <div className="border-t border-white/15 bg-white text-[#0a0a0a]">
+        <div className="mx-auto flex max-w-[1440px] flex-col gap-3 px-4 py-5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-6 sm:px-6 md:px-12 md:py-6">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-500 sm:text-[11px]">
+            CORE STACK &amp; OPEN SOURCE
+          </p>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-display text-xs font-bold uppercase tracking-tight text-[#0a0a0a] sm:gap-x-8 sm:text-base">
+            <span>React</span>
+            <span>Next.js</span>
+            <span>Node.js</span>
+            <span>TypeScript</span>
+            <span>Socket.IO</span>
+            <span>MongoDB</span>
+            <span>Docker</span>
+            <span>Cockpit</span>
+            <span>React-Bootstrap</span>
           </div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   )
 }

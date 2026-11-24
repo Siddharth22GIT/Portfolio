@@ -10,83 +10,91 @@ export const OpenSource: React.FC<SectionProps> = ({ id }) => {
   return (
     <section
       id={id}
-      className="mb-20 scroll-mt-24"
+      className="border-t border-black/10 bg-white py-14 text-[#0a0a0a] md:py-28"
       aria-labelledby="opensource-heading"
     >
-      <motion.div
-        initial={{ opacity: 0, y: 26 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="rounded-[2rem] border border-white/60 bg-white/80 p-6 shadow-soft backdrop-blur-xl dark:border-slate-700/80 dark:bg-slate-900/85"
-      >
-        <div className="mb-6 flex items-center justify-between gap-3">
-          <div>
-            <p className="text-xs font-medium uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
-              Open-Source Contributions
-            </p>
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 md:px-12">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.55, ease: 'easeOut' }}
+        >
+          <div className="mb-8 md:mb-12">
+            <div className="mb-4 inline-flex items-center gap-2 border border-black/15 bg-[#f4f4f4] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] md:mb-6">
+              <span>✦</span>
+              <span>Open Source</span>
+            </div>
             <h2
               id="opensource-heading"
-              className="mt-1 text-lg font-semibold text-slate-900 sm:text-xl dark:text-slate-50"
+              className="max-w-4xl font-display text-3xl font-bold uppercase leading-[0.95] tracking-[-0.04em] sm:text-5xl lg:text-7xl"
             >
-              Merged pull requests in production libraries
+              OPEN-SOURCE{' '}
+              <span className="text-neutral-400">CONTRIBUTIONS</span>
             </h2>
           </div>
-        </div>
 
-        <div className="grid gap-4 md:grid-cols-2">
-          {openSourceContributions.map((contrib) => (
-            <motion.article
-              key={contrib.project}
-              whileHover={{ y: -4 }}
-              transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-              className="flex flex-col justify-between rounded-3xl border border-slate-100/80 bg-slate-50/90 p-5 shadow-soft backdrop-blur dark:border-slate-700/80 dark:bg-slate-900/80"
-            >
-              <div>
-                <div className="flex flex-wrap items-start justify-between gap-2">
-                  <div>
-                    <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-50">
-                      {contrib.project}
-                    </h3>
-                    <p className="mt-0.5 text-[11px] font-medium text-brand-500 dark:text-sky-400">
-                      {contrib.stars}
-                    </p>
-                  </div>
-                  <span className="rounded-full bg-white/90 px-2.5 py-0.5 text-[11px] font-medium text-slate-500 shadow-sm dark:bg-slate-800 dark:text-slate-300">
-                    {contrib.date}
-                  </span>
-                </div>
-
-                <p className="mt-3 text-xs leading-relaxed text-slate-600 dark:text-slate-300">
-                  {contrib.summary}
-                </p>
-
-                <div className="mt-4 flex flex-wrap gap-1.5">
-                  {contrib.tech.map((techItem) => (
-                    <span
-                      key={techItem}
-                      className="rounded-xl bg-white/90 px-2.5 py-1 text-[11px] font-medium text-slate-600 shadow-sm dark:bg-slate-800/90 dark:text-slate-300"
-                    >
-                      {techItem}
+          <div className="grid gap-5 md:grid-cols-2 md:gap-6">
+            {openSourceContributions.map((contrib, index) => (
+              <motion.article
+                key={contrib.project}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
+                className="flex flex-col justify-between bg-[#0a0a0a] p-5 text-white sm:p-7 md:p-9"
+              >
+                <div>
+                  <div className="flex flex-col items-start justify-between gap-2 border-b border-white/15 pb-4 sm:flex-row sm:gap-4 sm:pb-5">
+                    <div>
+                      <span className="text-lg text-white">✦</span>
+                      <h3 className="mt-2 font-display text-xl font-bold uppercase tracking-tight sm:mt-3 sm:text-3xl">
+                        {contrib.project}
+                      </h3>
+                      <p className="mt-1 text-xs font-medium uppercase tracking-[0.16em] text-neutral-400">
+                        {contrib.stars}
+                      </p>
+                    </div>
+                    <span className="border border-white/20 px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-neutral-300">
+                      {contrib.date}
                     </span>
-                  ))}
-                </div>
-              </div>
+                  </div>
 
-              <div className="mt-4 flex gap-2 text-xs font-medium">
-                <a
-                  href={contrib.prUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex flex-1 items-center justify-center rounded-2xl bg-slate-900 px-3 py-2 text-white shadow-sm transition hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200"
-                >
-                  View Merged PR
-                </a>
-              </div>
-            </motion.article>
-          ))}
-        </div>
-      </motion.div>
+                  <p className="mt-5 text-xs leading-relaxed text-neutral-300 sm:mt-6 sm:text-sm">
+                    {contrib.summary}
+                  </p>
+
+                  <div className="mt-5 flex flex-wrap gap-1.5 sm:mt-6">
+                    {contrib.tech.map((techItem) => (
+                      <span
+                        key={techItem}
+                        className="border border-white/15 bg-white/5 px-2.5 py-1 text-[11px] font-medium text-neutral-200"
+                      >
+                        {techItem}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-white/15 pt-4 sm:mt-8 sm:pt-5">
+                  <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-400">
+                    PR #{String(index + 1).padStart(2, '0')} • Merged
+                  </span>
+                  <a
+                    href={contrib.prUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center border border-white bg-white text-xs font-semibold uppercase tracking-[0.16em] text-[#0a0a0a] transition hover:bg-transparent hover:text-white"
+                  >
+                    <span className="px-3.5 py-2 sm:px-4 sm:py-2.5">View Merged PR</span>
+                    <span className="border-l border-black/15 px-3 py-2 sm:py-2.5">
+                      ↗
+                    </span>
+                  </a>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </motion.div>
+      </div>
     </section>
   )
 }

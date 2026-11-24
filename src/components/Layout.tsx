@@ -1,7 +1,6 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { ThemeToggle } from './ThemeToggle'
-import { navTargets } from '../config/data'
+import React, { useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { contactLinks, navTargets } from '../config/data'
 import { SectionId } from '../config/sections'
 
 type LayoutProps = {
@@ -9,74 +8,161 @@ type LayoutProps = {
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const [menuOpen, setMenuOpen] = useState(false)
+
   const handleScroll = (id: SectionId) => {
+    setMenuOpen(false)
     const el = document.getElementById(id)
     if (!el) return
     el.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   return (
-    <div className="relative min-h-screen bg-slate-50 text-slate-900 transition-colors duration-500 dark:bg-slate-950 dark:text-slate-50">
-      {/* Hyper-realistic gradient background */}
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
-      >
-        <motion.div
-          className="absolute -top-40 left-[-10%] h-80 w-80 rounded-full bg-gradient-to-tr from-brand-400/40 via-sky-300/40 to-fuchsia-400/30 blur-3xl"
-          animate={{ y: [0, 40, 0] }}
-          transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div
-          className="absolute top-32 right-[-5%] h-96 w-96 rounded-full bg-gradient-to-tr from-emerald-300/40 via-brand-500/40 to-sky-400/40 blur-3xl"
-          animate={{ y: [0, -40, 0] }}
-          transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div
-          className="absolute bottom-[-10%] left-1/4 h-96 w-[36rem] rounded-[4rem] bg-gradient-to-tr from-slate-900/80 via-slate-800/60 to-brand-500/40 blur-3xl dark:opacity-80"
-          animate={{ x: [0, 40, -20, 0] }}
-          transition={{ duration: 26, repeat: Infinity, ease: 'easeInOut' }}
-        />
-      </div>
-
-      <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col px-5 pb-10 pt-4 sm:px-6 lg:px-8">
-        <header className="sticky top-4 z-20 mb-8 flex items-center justify-between rounded-3xl border border-white/40 bg-white/70 px-4 py-2 shadow-soft backdrop-blur-xl dark:border-slate-700/80 dark:bg-slate-900/80">
+    <div className="min-h-screen overflow-x-clip bg-white text-[#0a0a0a]">
+      {/* Top sticky editorial navbar */}
+      <header className="sticky top-0 z-40 border-b border-white/15 bg-[#0a0a0a]/95 text-white backdrop-blur-md">
+        <div className="mx-auto grid max-w-[1440px] grid-cols-[1fr_auto] items-center md:grid-cols-[240px_1fr_80px]">
           <button
             onClick={() => handleScroll(SectionId.Hero)}
-            className="group inline-flex items-center gap-2 rounded-2xl px-2 py-1 text-left transition-colors"
+            className="flex h-14 items-center px-4 text-left font-display text-lg font-semibold tracking-tight text-white transition-opacity hover:opacity-80 sm:px-6 md:h-16 md:border-r md:border-white/15"
           >
-            <span className="h-7 w-7 rounded-2xl bg-gradient-to-tr from-brand-500 to-sky-400 text-sm font-semibold text-white shadow-soft-lg ring-2 ring-white/60 dark:ring-slate-900/80" />
-            <div className="flex flex-col">
-              <span className="text-xs font-medium uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
-                Portfolio
-              </span>
-              <span className="text-sm font-semibold text-slate-900 dark:text-slate-50">
-                Siddharth Mishra
-              </span>
-            </div>
+            Siddharth<span className="ml-0.5 align-super text-xs">®</span>
           </button>
 
-          <nav className="hidden items-center gap-1 rounded-2xl bg-slate-100/70 p-1 text-xs font-medium text-slate-600 shadow-sm backdrop-blur sm:flex dark:bg-slate-900/80 dark:text-slate-300">
-            {navTargets.map((item) => (
+          <nav
+            aria-label="Primary"
+            className="hidden h-16 items-center justify-center md:flex"
+          >
+            {navTargets.slice(0, 5).map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleScroll(item.id)}
-                className="rounded-2xl px-3 py-1.5 transition-all hover:bg-white hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-white"
+                className="flex h-full items-center border-r border-white/10 px-6 text-xs font-medium uppercase tracking-[0.14em] text-neutral-300 transition-colors first:border-l first:border-white/10 hover:bg-white hover:text-[#0a0a0a]"
               >
                 {item.label}
               </button>
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-          </div>
-        </header>
+          <button
+            type="button"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={menuOpen}
+            className="flex h-14 w-16 items-center justify-center border-l border-white/15 text-white transition-colors hover:bg-white hover:text-[#0a0a0a] md:h-16 md:w-20"
+          >
+            <div className="flex flex-col gap-1.5">
+              <span
+                className={`block h-[2px] w-6 bg-current transition-transform duration-300 ${
+                  menuOpen ? 'translate-y-[4px] rotate-45' : ''
+                }`}
+              />
+              <span
+                className={`block h-[2px] w-6 bg-current transition-transform duration-300 ${
+                  menuOpen ? '-translate-y-[4px] -rotate-45' : ''
+                }`}
+              />
+            </div>
+          </button>
+        </div>
+      </header>
 
-        {children}
-      </div>
+      {/* Fullscreen architectural drawer menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            className="fixed inset-0 top-14 z-30 overflow-y-auto bg-[#0a0a0a] text-white md:top-16"
+          >
+            <div className="mx-auto grid min-h-[calc(100vh-3.5rem)] max-w-[1440px] md:min-h-[calc(100vh-4rem)] md:grid-cols-[1.3fr_1fr]">
+              <div className="flex flex-col justify-center border-b border-white/15 px-5 py-8 md:border-b-0 md:border-r md:px-14 md:py-10">
+                <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-neutral-400 md:mb-6">
+                  Navigation
+                </p>
+                <ul className="divide-y divide-white/10">
+                  {navTargets.map((item) => (
+                    <li key={item.id}>
+                      <button
+                        onClick={() => handleScroll(item.id)}
+                        className="group flex w-full items-center justify-between py-3.5 text-left font-display text-2xl font-bold uppercase tracking-tight text-white transition-colors hover:text-neutral-400 sm:text-4xl md:py-4 md:text-5xl"
+                      >
+                        <span>{item.label}</span>
+                        <span className="text-xl font-light text-neutral-500 transition-transform group-hover:rotate-45 group-hover:text-white sm:text-2xl">
+                          +
+                        </span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="flex flex-col justify-between px-5 py-8 md:px-14 md:py-10">
+                <div className="space-y-6 md:space-y-8">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.2em] text-neutral-400">
+                      Mobile
+                    </p>
+                    <a
+                      href={contactLinks.phone}
+                      className="mt-2 block font-display text-xl font-semibold text-white hover:underline sm:text-2xl"
+                    >
+                      {contactLinks.phoneDisplay}
+                    </a>
+                  </div>
+
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.2em] text-neutral-400">
+                      Email
+                    </p>
+                    <a
+                      href={contactLinks.email}
+                      className="mt-2 block break-all font-display text-lg font-semibold text-white hover:underline sm:text-2xl"
+                    >
+                      {contactLinks.emailAddress}
+                    </a>
+                  </div>
+
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.2em] text-neutral-400">
+                      Education &amp; Location
+                    </p>
+                    <p className="mt-2 text-base font-medium text-neutral-200">
+                      Lovely Professional University, Punjab, India
+                    </p>
+                    <p className="mt-1 text-sm text-neutral-400">
+                      B.Tech CSE (2024 - 2028)
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-10 flex flex-wrap gap-3 border-t border-white/15 pt-6">
+                  <a
+                    href={contactLinks.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="border border-white/25 px-4 py-2 text-xs font-medium uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-[#0a0a0a]"
+                  >
+                    GitHub ↗
+                  </a>
+                  <a
+                    href={contactLinks.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="border border-white/25 px-4 py-2 text-xs font-medium uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-[#0a0a0a]"
+                  >
+                    LinkedIn ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {children}
     </div>
   )
 }
-
-

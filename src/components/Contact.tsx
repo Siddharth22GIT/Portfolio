@@ -51,147 +51,161 @@ export const Contact: React.FC<SectionProps> = ({ id }) => {
   return (
     <section
       id={id}
-      className="mb-16 scroll-mt-24"
+      className="bg-[#0a0a0a] py-14 text-white md:py-28"
       aria-labelledby="contact-heading"
     >
-      <motion.div
-        initial={{ opacity: 0, y: 26 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="rounded-[2rem] border border-white/60 bg-white/80 p-6 shadow-soft backdrop-blur-xl dark:border-slate-700/80 dark:bg-slate-900/85"
-      >
-        <div className="mb-6 flex items-center justify-between gap-3">
-          <div>
-            <p className="text-xs font-medium uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
-              Contact
-            </p>
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 md:px-12">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.55, ease: 'easeOut' }}
+          className="grid gap-8 border border-white/15 bg-[#111111] p-4 sm:p-6 md:grid-cols-[0.95fr_1.15fr] md:items-center md:gap-12 md:p-12"
+        >
+          {/* Left white editorial form card */}
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white p-5 text-[#0a0a0a] md:p-8"
+          >
+            <div className="border-b border-black/10 pb-4">
+              <p className="font-display text-lg font-bold tracking-tight">
+                Siddharth<span className="text-xs align-super ml-0.5">®</span>
+              </p>
+              <p className="mt-1 text-xs uppercase tracking-[0.16em] text-neutral-500">
+                Reach Out to Me
+              </p>
+            </div>
+
+            <div className="mt-5 space-y-4 text-xs">
+              <div>
+                <label className="mb-1.5 block font-semibold uppercase tracking-[0.14em] text-neutral-600">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  placeholder="Your name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full border border-black/15 bg-[#f4f4f4] px-3.5 py-2.5 text-xs text-[#0a0a0a] outline-none transition focus:border-black focus:bg-white"
+                />
+              </div>
+              <div>
+                <label className="mb-1.5 block font-semibold uppercase tracking-[0.14em] text-neutral-600">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full border border-black/15 bg-[#f4f4f4] px-3.5 py-2.5 text-xs text-[#0a0a0a] outline-none transition focus:border-black focus:bg-white"
+                />
+              </div>
+              <div>
+                <label className="mb-1.5 block font-semibold uppercase tracking-[0.14em] text-neutral-600">
+                  Message
+                </label>
+                <textarea
+                  rows={3}
+                  placeholder="Tell me about your project or opportunity."
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  className="w-full resize-none border border-black/15 bg-[#f4f4f4] px-3.5 py-2.5 text-xs text-[#0a0a0a] outline-none transition focus:border-black focus:bg-white"
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={status === 'loading'}
+                className="w-full bg-[#0a0a0a] px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {status === 'loading' ? 'Sending…' : 'Send Message'}
+              </button>
+              {status === 'success' && (
+                <p className="text-[11px] font-medium text-neutral-700">
+                  Message sent successfully. I&apos;ll get back to you soon.
+                </p>
+              )}
+              {status === 'error' && error && (
+                <p className="text-[11px] font-medium text-neutral-700">
+                  {error}
+                </p>
+              )}
+            </div>
+          </form>
+
+          {/* Right editorial headline + direct contact links */}
+          <div className="space-y-6 md:space-y-8">
+            <div className="inline-flex items-center gap-2 border border-white/20 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-neutral-300">
+              <span>✦</span>
+              <span>Contact</span>
+            </div>
+
             <h2
               id="contact-heading"
-              className="mt-1 text-lg font-semibold text-slate-900 sm:text-xl dark:text-slate-50"
+              className="font-display text-3xl font-bold uppercase leading-[0.95] tracking-[-0.04em] sm:text-5xl lg:text-6xl"
             >
-              Let&apos;s build something together
+              LET&apos;S BUILD{' '}
+              <span className="block text-neutral-400">TOGETHER</span>
             </h2>
-          </div>
-        </div>
 
-        <div className="grid gap-6 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
-          <div className="space-y-4 text-sm text-slate-600 dark:text-slate-300">
-            <p>
-              Open to software engineering internships, full-stack projects, and
-              open-source collaborations. Reach out directly via email, phone, or
-              my developer profiles.
+            <p className="max-w-md text-xs uppercase leading-relaxed tracking-[0.08em] text-neutral-300">
+              Open to software engineering internships, full-stack products, and
+              open-source collaborations.
             </p>
-            <div className="space-y-2 text-xs">
+
+            <div className="divide-y divide-white/15 border-y border-white/15 text-xs">
               <a
                 href={contactLinks.email}
-                className="flex items-center justify-between rounded-2xl bg-slate-50 px-3 py-2 text-slate-700 shadow-sm transition hover:bg-white dark:bg-slate-900/80 dark:text-slate-100 dark:hover:bg-slate-900"
+                className="flex flex-wrap items-center justify-between gap-2 py-3.5 transition hover:text-neutral-300"
               >
-                <span className="inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
+                <span className="uppercase tracking-[0.16em] text-neutral-400">
                   Email
                 </span>
-                <span className="text-[11px] font-medium">
-                  {contactLinks.emailAddress}
+                <span className="break-all font-medium text-white">
+                  {contactLinks.emailAddress} ↗
                 </span>
               </a>
               <a
                 href={contactLinks.phone}
-                className="flex items-center justify-between rounded-2xl bg-slate-50 px-3 py-2 text-slate-700 shadow-sm transition hover:bg-white dark:bg-slate-900/80 dark:text-slate-100 dark:hover:bg-slate-900"
+                className="flex items-center justify-between py-3.5 transition hover:text-neutral-300"
               >
-                <span className="inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                <span className="uppercase tracking-[0.16em] text-neutral-400">
                   Mobile
                 </span>
-                <span className="text-[11px] font-medium">
-                  {contactLinks.phoneDisplay}
+                <span className="font-medium text-white">
+                  {contactLinks.phoneDisplay} ↗
                 </span>
               </a>
               <a
                 href={contactLinks.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-between rounded-2xl bg-slate-50 px-3 py-2 text-slate-700 shadow-sm transition hover:bg-white dark:bg-slate-900/80 dark:text-slate-100 dark:hover:bg-slate-900"
+                className="flex items-center justify-between py-3.5 transition hover:text-neutral-300"
               >
-                <span className="inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-sky-500" />
+                <span className="uppercase tracking-[0.16em] text-neutral-400">
                   LinkedIn
                 </span>
-                <span className="text-[11px] font-medium">Connect</span>
+                <span className="font-medium text-white">
+                  /in/-siddharthmishra ↗
+                </span>
               </a>
               <a
                 href={contactLinks.github}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-between rounded-2xl bg-slate-50 px-3 py-2 text-slate-700 shadow-sm transition hover:bg-white dark:bg-slate-900/80 dark:text-slate-100 dark:hover:bg-slate-900"
+                className="flex items-center justify-between py-3.5 transition hover:text-neutral-300"
               >
-                <span className="inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-slate-900 dark:bg-slate-50" />
+                <span className="uppercase tracking-[0.16em] text-neutral-400">
                   GitHub
                 </span>
-                <span className="text-[11px] font-medium">View Profile</span>
+                <span className="font-medium text-white">
+                  @Siddharth22GIT ↗
+                </span>
               </a>
             </div>
           </div>
-
-          <form
-            onSubmit={handleSubmit}
-            className="space-y-3 rounded-3xl border border-slate-100/80 bg-slate-50/90 p-4 text-xs text-slate-600 shadow-sm dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-300"
-          >
-            <div>
-              <label className="mb-1 block text-[11px] font-medium text-slate-500 dark:text-slate-400">
-                Name
-              </label>
-              <input
-                type="text"
-                placeholder="Your name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="w-full rounded-2xl border border-slate-200 bg-white/80 px-3 py-2 text-xs text-slate-900 shadow-sm outline-none transition focus:border-brand-400 focus:ring-2 focus:ring-brand-200 dark:border-slate-700 dark:bg-slate-950/60 dark:text-slate-50 dark:focus:border-brand-400 dark:focus:ring-brand-500/30"
-              />
-            </div>
-            <div>
-              <label className="mb-1 block text-[11px] font-medium text-slate-500 dark:text-slate-400">
-                Email
-              </label>
-              <input
-                type="email"
-                placeholder="you@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-2xl border border-slate-200 bg-white/80 px-3 py-2 text-xs text-slate-900 shadow-sm outline-none transition focus:border-brand-400 focus:ring-2 focus:ring-brand-200 dark:border-slate-700 dark:bg-slate-950/60 dark:text-slate-50 dark:focus:border-brand-400 dark:focus:ring-brand-500/30"
-              />
-            </div>
-            <div>
-              <label className="mb-1 block text-[11px] font-medium text-slate-500 dark:text-slate-400">
-                Message
-              </label>
-              <textarea
-                rows={3}
-                placeholder="Tell me a bit about your project or idea."
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                className="w-full resize-none rounded-2xl border border-slate-200 bg-white/80 px-3 py-2 text-xs text-slate-900 shadow-sm outline-none transition focus:border-brand-400 focus:ring-2 focus:ring-brand-200 dark:border-slate-700 dark:bg-slate-950/60 dark:text-slate-50 dark:focus:border-brand-400 dark:focus:ring-brand-500/30"
-              />
-            </div>
-            <button
-              type="submit"
-              disabled={status === 'loading'}
-              className="inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-tr from-brand-500 to-sky-400 px-4 py-2.5 text-xs font-semibold text-white shadow-soft-lg transition hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50 disabled:opacity-70 disabled:cursor-not-allowed dark:focus-visible:ring-offset-slate-950"
-            >
-              {status === 'loading' ? 'Sending…' : 'Send Message'}
-            </button>
-            {status === 'success' && (
-              <p className="text-[10px] text-emerald-500">
-                Message sent successfully. I&apos;ll get back to you soon.
-              </p>
-            )}
-            {status === 'error' && error && (
-              <p className="text-[10px] text-rose-500">{error}</p>
-            )}
-          </form>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   )
 }

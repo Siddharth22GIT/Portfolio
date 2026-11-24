@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { achievements, certificates, education } from '../config/data'
+import { certificates, education } from '../config/data'
 
 interface SectionProps {
   id: string
@@ -10,120 +10,93 @@ export const Credentials: React.FC<SectionProps> = ({ id }) => {
   return (
     <section
       id={id}
-      className="mb-20 scroll-mt-24"
+      className="border-t border-black/10 bg-white py-14 text-[#0a0a0a] md:py-28"
       aria-labelledby="credentials-heading"
     >
-      <motion.div
-        initial={{ opacity: 0, y: 26 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="rounded-[2rem] border border-white/60 bg-white/80 p-6 shadow-soft backdrop-blur-xl dark:border-slate-700/80 dark:bg-slate-900/85"
-      >
-        <div className="mb-6 flex items-center justify-between gap-3">
-          <div>
-            <p className="text-xs font-medium uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
-              Achievements, Certificates &amp; Education
-            </p>
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 md:px-12">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.55, ease: 'easeOut' }}
+        >
+          <div className="mb-8 md:mb-12">
+            <div className="mb-4 inline-flex items-center gap-2 border border-black/15 bg-[#f4f4f4] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] md:mb-6">
+              <span>✦</span>
+              <span>Education &amp; Certificates</span>
+            </div>
             <h2
               id="credentials-heading"
-              className="mt-1 text-lg font-semibold text-slate-900 sm:text-xl dark:text-slate-50"
+              className="max-w-4xl font-display text-3xl font-bold uppercase leading-[0.95] tracking-[-0.04em] sm:text-5xl lg:text-7xl"
             >
-              Academic background &amp; milestones
+              ACADEMIC{' '}
+              <span className="text-neutral-400">BACKGROUND &amp;</span>{' '}
+              CERTIFICATIONS
             </h2>
           </div>
-        </div>
 
-        <div className="grid gap-4 md:grid-cols-2">
-          <div className="space-y-4">
-            <div className="rounded-3xl border border-slate-100/80 bg-slate-50/90 p-5 shadow-sm dark:border-slate-700/80 dark:bg-slate-900/80">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
-                Achievements
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-12">
+            {/* Education */}
+            <div>
+              <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-neutral-500">
+                01 / Education
               </p>
-              <div className="space-y-3">
-                {achievements.map((item) => (
+              <div className="divide-y divide-black/10 border-y border-black/10">
+                {education.map((edu) => (
                   <div
-                    key={item.title}
-                    className="rounded-2xl bg-white/85 p-4 shadow-sm dark:bg-slate-900/90"
+                    key={`${edu.institution}-${edu.degree}`}
+                    className="py-5 sm:py-6"
                   >
-                    <div className="flex flex-wrap items-start justify-between gap-2">
-                      <h3 className="text-xs font-semibold text-slate-900 sm:text-sm dark:text-slate-50">
-                        {item.title}
+                    <div className="flex flex-col items-start justify-between gap-2 sm:flex-row">
+                      <h3 className="font-display text-base font-bold uppercase tracking-tight text-[#0a0a0a] sm:text-lg">
+                        {edu.institution}
                       </h3>
-                      <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-medium text-slate-500 dark:bg-slate-800 dark:text-slate-300">
-                        {item.date}
+                      <span className="shrink-0 border border-black/15 bg-[#f4f4f4] px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.12em] text-neutral-700">
+                        {edu.period}
                       </span>
                     </div>
-                    <ul className="mt-2.5 space-y-1.5 text-xs leading-relaxed text-slate-600 dark:text-slate-300">
-                      {item.bullets.map((bullet) => (
-                        <li key={bullet} className="flex gap-2">
-                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400" />
-                          <span>{bullet}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <p className="mt-2 text-xs text-neutral-700 sm:text-sm">
+                      {edu.degree}
+                    </p>
+                    {edu.score && (
+                      <p className="mt-2 text-xs font-semibold uppercase tracking-[0.15em] text-[#0a0a0a]">
+                        {edu.score}
+                      </p>
+                    )}
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="rounded-3xl border border-slate-100/80 bg-slate-50/90 p-5 shadow-sm dark:border-slate-700/80 dark:bg-slate-900/80">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
-                Certificates
+            {/* Certificates */}
+            <div>
+              <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-neutral-500">
+                02 / Certificates
               </p>
-              <ul className="space-y-2.5 text-xs">
-                {certificates.map((cert) => (
-                  <li
+              <div className="divide-y divide-black/10 border-y border-black/10">
+                {certificates.map((cert, index) => (
+                  <div
                     key={cert.title}
-                    className="flex flex-wrap items-center justify-between gap-2 rounded-2xl bg-white/85 px-4 py-3 shadow-sm dark:bg-slate-900/90"
+                    className="flex flex-col items-start justify-between gap-3 py-5 sm:flex-row sm:items-center sm:gap-4 sm:py-6"
                   >
-                    <div>
-                      <p className="font-semibold text-slate-900 dark:text-slate-50">
+                    <div className="space-y-1">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-400">
+                        {String(index + 1).padStart(2, '0')} • {cert.issuer}
+                      </p>
+                      <h3 className="font-display text-base font-bold uppercase tracking-tight text-[#0a0a0a] sm:text-lg">
                         {cert.title}
-                      </p>
-                      <p className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
-                        {cert.issuer}
-                      </p>
+                      </h3>
                     </div>
-                    <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-medium text-slate-500 dark:bg-slate-800 dark:text-slate-300">
+                    <span className="shrink-0 border border-black/15 bg-[#f4f4f4] px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.12em] text-neutral-700">
                       {cert.date}
                     </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="rounded-3xl border border-slate-100/80 bg-slate-50/90 p-5 shadow-sm dark:border-slate-700/80 dark:bg-slate-900/80">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
-              Education
-            </p>
-            <div className="space-y-3">
-              {education.map((edu) => (
-                <div
-                  key={`${edu.institution}-${edu.degree}`}
-                  className="rounded-2xl bg-white/85 p-4 shadow-sm dark:bg-slate-900/90"
-                >
-                  <div className="flex flex-wrap items-start justify-between gap-2">
-                    <h3 className="text-xs font-semibold text-slate-900 sm:text-sm dark:text-slate-50">
-                      {edu.institution}
-                    </h3>
-                    <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-medium text-slate-500 dark:bg-slate-800 dark:text-slate-300">
-                      {edu.period}
-                    </span>
                   </div>
-                  <p className="mt-1.5 text-xs text-slate-600 dark:text-slate-300">
-                    {edu.degree}
-                  </p>
-                  <p className="mt-1 text-[11px] font-medium text-brand-500 dark:text-sky-400">
-                    {edu.score}
-                  </p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   )
 }
