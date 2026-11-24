@@ -2,80 +2,260 @@ import { SectionId } from './sections'
 
 export const profile = {
   name: 'Siddharth Mishra',
-  title: 'Software Developer • ML • LLMs',
+  title: 'Full-Stack Developer • Open-Source Contributor',
   tagline:
-    'Developer by day, Creator by night.',
+    'Building scalable web systems, real-time platforms, and developer tools — and sharing CS & engineering with a 10K+ developer community at @gotocodes.',
+  status: 'B.Tech CSE @ LPU • Open to internships & collaborations',
+  badges: [
+    'React, Next.js, Node.js, TypeScript, C++, Python',
+    'Open-Source Contributor • Cockpit & React-Bootstrap',
+  ],
 }
 
 export const about = {
   paragraph:
-    "I'm a Software dev, building modern, high-performance apps and developing scalable backend systems.\n\nBeyond development, I run a developers community of over 10,000+ CS students on Instagram.",
+    "I'm a Computer Science & Engineering undergraduate at Lovely Professional University (CGPA: 8.22) focused on full-stack development, real-time systems, and accessible UI engineering.\n\nBeyond building products like IPChat, Unravel, and Where's My Bus, I contribute to major open-source projects and run @gotocodes—producing technical content on full-stack development, DSA, and career guidance for a 10K+ developer community.",
   quickInfo: [
-    { label: 'Location', value: 'India' },
-    { label: 'Education', value: 'B.Tech CSE' },
-    { label: 'Focus', value: 'Full Stack & CS Fundamentals' },
-    { label: 'Also', value: 'Video editing & motion design' },
+    { label: 'Education', value: 'B.Tech CSE • LPU (8.22)' },
+    { label: 'Focus', value: 'Full Stack & Real-Time Systems' },
+    { label: 'Open Source', value: 'Cockpit & React-Bootstrap' },
+    { label: 'Community', value: '@gotocodes (10K+ Devs)' },
   ],
 }
 
 export const techStack = {
-  frontend: {
-    title: 'Frontend',
-    items: ['HTML', 'CSS', 'JavaScript', 'React', 'Vite', 'Tailwind CSS'],
+  languages: {
+    title: 'Languages',
+    items: ['Java', 'Python', 'C++', 'C', 'JavaScript', 'TypeScript'],
   },
-  backend: {
-    title: 'Backend',
-    items: ['Node.js (Express)', 'NextJS', 'Python (Flask)', 'Python(FastAPI)'],
-  },
-  ML: {
-    title: 'ML Stack',
-    items: ['XGBoost','Regression','OpenCV','NumPy','Pandas','Scikit','Matplotlib']
-  },
-  core: {
-    title: 'Core CS',
-    items: ['C', 'C++','Java', 'Python', 'Data Structures & Algorithms', 'SQL'],
+  frameworks: {
+    title: 'Frameworks',
+    items: [
+      'Node.js',
+      'Express.js',
+      'React',
+      'Next.js',
+      'Flask',
+      'Tailwind CSS',
+      'Socket.IO',
+      'Mongoose',
+      'HTML5',
+      'CSS3',
+    ],
   },
   tools: {
-    title: 'Tools',
-    items: ['Git', 'GitHub', 'VS Code', 'Postman', 'Docker', 'n8n'],
+    title: 'Tools / Platforms',
+    items: [
+      'Git',
+      'GitHub',
+      'Docker',
+      'Linux',
+      'Postman',
+      'Visual Studio (debugger)',
+      'CI/CD (Git-based deployments)',
+      'Render',
+      'Vercel',
+      'MongoDB Atlas',
+      'Google Cloud Console (OAuth setup)',
+    ],
+  },
+  databases: {
+    title: 'Databases',
+    items: ['MongoDB', 'PostgreSQL'],
+  },
+  coreCs: {
+    title: 'Core CS',
+    items: [
+      'Data Structures',
+      'Algorithms',
+      'Operating Systems',
+      'Computer Networks',
+      'DBMS',
+      'Object-Oriented Programming (OOP)',
+    ],
+  },
+  concepts: {
+    title: 'Concepts',
+    items: [
+      'RESTful APIs',
+      'JWT Authentication',
+      'AES-256-GCM Encryption',
+      'Real-Time Communication (WebSockets)',
+      'CRUD',
+    ],
+  },
+  softSkills: {
+    title: 'Soft Skills',
+    items: ['Leadership', 'Teamwork', 'Problem-Solving', 'Technical Communication'],
   },
 }
 
+export type ExperienceItem = {
+  organization: string
+  role: string
+  period: string
+  description: string
+  highlights: string[]
+}
+
+export const experiences: ExperienceItem[] = [
+  {
+    organization: '@gotocodes',
+    role: 'Digital Creator',
+    period: '2026 - Present',
+    description:
+      'Produced technical content on Instagram and YouTube (full-stack development, DSA, career guidance), communicating technical concepts clearly to a 10K+ developer community.',
+    highlights: ['Instagram & YouTube', 'Full-Stack & DSA', '10K+ Developer Community'],
+  },
+]
+
+export type OpenSourceContribution = {
+  project: string
+  stars: string
+  date: string
+  prUrl: string
+  summary: string
+  tech: string[]
+}
+
+export const openSourceContributions: OpenSourceContribution[] = [
+  {
+    project: 'Cockpit',
+    stars: '15.4K+ GitHub Stars',
+    date: 'November 2026',
+    prUrl: 'https://github.com/cockpit-project/cockpit/pull/23884',
+    summary:
+      'Improved FileChooser accessibility via semantic ARIA labels, deduplicated screen-reader output and better keyboard navigation.',
+    tech: ['React', 'TypeScript', 'ARIA', 'PatternFly'],
+  },
+  {
+    project: 'React-Bootstrap',
+    stars: '22.6K+ GitHub Stars',
+    date: 'November 2026',
+    prUrl: 'https://github.com/react-bootstrap/react-bootstrap/pull/7071#issuecomment-6940652378',
+    summary:
+      'Fixed iOS select-menu positioning via focus and blur handling on pointer events; added regression tests for modals.',
+    tech: ['React', 'TypeScript', 'Vitest', 'DOM APIs'],
+  },
+]
+
 export type Project = {
   title: string
-  description: string
+  date: string
+  highlights: string[]
   tech: string[]
-  demoUrl?: string
+  demoUrl: string
 }
 
 export const projects: Project[] = [
   {
+    title: 'IPChat',
+    date: 'March 2026',
+    highlights: [
+      'Built and deployed a real-time chat platform; handled hundreds of live sessions after a viral Reel (600K+ views, 20K+ saves).',
+      'Implemented AES-256-GCM encryption, typing indicators, reply threading and live member lists with Socket.IO.',
+    ],
+    tech: ['Node.js', 'Express.js', 'Socket.IO', 'AES-256-GCM Encryption', 'JavaScript', 'Git'],
+    demoUrl: 'https://ipchat.in',
+  },
+  {
+    title: 'Unravel - Developer Tool for Online C++ Execution',
+    date: 'April 2026',
+    highlights: [
+      'Built a developer tool: a browser-based C++ executor that compiles and runs code online with zero setup and returns output with instant feedback.',
+      'Added automatic Big-O complexity analysis so learners see algorithm efficiency instantly; deployed live on Render.',
+    ],
+    tech: ['C++', 'JavaScript', 'Algorithms', 'Render'],
+    demoUrl: 'https://unravel-pl53.onrender.com/',
+  },
+  {
+    title: "Where's My Bus",
+    date: 'July 2026',
+    highlights: [
+      'Architected a full-stack real-time bus tracking platform (MERN + Socket.IO) with RESTful APIs, JWT authentication, admin-managed route and vehicle CRUD, and road-accurate routing via OSRM and Leaflet.',
+      'Built route search, live bus status, pinned routes, GPS interpolation and push alerts; deployed on Render, Vercel and MongoDB Atlas.',
+    ],
+    tech: ['React', 'Node.js', 'Express.js', 'Socket.IO', 'MongoDB', 'Leaflet', 'OSRM', 'RESTful APIs'],
+    demoUrl: 'https://transport-monitoring-system.vercel.app/',
+  },
+  {
     title: 'Carbon Footprint Tracker',
-    description:
-      'A Flask web application for companies to track, manage, and visualize their carbon footprint data.',
-    tech: ['Flask', 'Python', 'Bootstrap', 'SQLite'],
+    date: 'November 2025',
+    highlights: [
+      'Built a full-stack Flask app for enterprises to track and reduce carbon emissions using international emission factors.',
+      'Built an interactive dashboard for real-time monitoring, sustainability targets and actionable insights; publicly live.',
+    ],
+    tech: ['Python', 'Flask', 'JavaScript', 'HTML5', 'CSS3'],
     demoUrl: 'https://carbfoot.vercel.app/',
   },
+]
+
+export type Certificate = {
+  title: string
+  issuer: string
+  date: string
+}
+
+export const certificates: Certificate[] = [
   {
-    title: 'Creator Studio',
-    description:
-      "A modern, dynamic, and responsive personal landing page showcasing an individual's work as a creator, developer, and educator.",
-    tech: ['React', 'Tailwind CSS', 'Vite'],
-    demoUrl: 'https://creator-landing-page-hazel.vercel.app/',
+    title: 'Fundamentals of Docker and Kubernetes',
+    issuer: 'Scaler',
+    date: 'September 2025',
   },
   {
-    title: 'Master Chef',
-    description:
-      'MasterChef is a recipe generator website. Just request a food item and get recipes on demand. Explore innovative culinary creations.',
-    tech: ['HTML', 'CSS', 'JavaScript'],
-    demoUrl: 'https://siddharth22git.github.io/MasterChef/',
+    title: 'MERN Stack Bootcamp - Full Stack Development and DevOps',
+    issuer: 'Bootcamp',
+    date: 'July 2026',
   },
   {
-    title: 'Safelink',
-    description:
-      'SafeLink is a lightweight, privacy-focused web application that helps users verify the safety of any URL before clicking it.',
-    tech: ['JavaScript', 'Node.js', 'API'],
-    demoUrl: 'https://safelink-seven.vercel.app/',
+    title: 'Responsible and Safe AI Systems',
+    issuer: 'NPTEL',
+    date: 'November 2026',
+  },
+]
+
+export type Achievement = {
+  title: string
+  date: string
+  bullets: string[]
+}
+
+export const achievements: Achievement[] = [
+  {
+    title: 'Smart India Hackathon (SIH) - Internal Hackathon Winner',
+    date: 'September 2026',
+    bullets: [
+      'Won the internal college hackathon for SIH with a 6-member team, out of 1000+ participating teams.',
+      'Selected among the top 50 shortlisted teams, delivering a working software solution under tight hackathon deadlines.',
+    ],
+  },
+]
+
+export type EducationItem = {
+  institution: string
+  degree: string
+  score: string
+  period: string
+}
+
+export const education: EducationItem[] = [
+  {
+    institution: 'Lovely Professional University, Punjab, India',
+    degree: 'Bachelor of Technology - Computer Science and Engineering',
+    score: 'CGPA: 8.22',
+    period: '2024 - 2028',
+  },
+  {
+    institution: 'Army Public School, Roorkee, Uttarakhand',
+    degree: 'Class XII',
+    score: 'Percentage: 78%',
+    period: 'April 2022 - April 2023',
+  },
+  {
+    institution: 'Army Public School, Roorkee, Uttarakhand',
+    degree: 'Class X',
+    score: 'Percentage: 94.8%',
+    period: 'April 2020 - April 2021',
   },
 ]
 
@@ -89,17 +269,19 @@ export const creativeSkills = [
 
 export const contactLinks = {
   email: 'mailto:siddharthmishra10e@gmail.com',
+  emailAddress: 'siddharthmishra10e@gmail.com',
+  phone: 'tel:+917217220805',
+  phoneDisplay: '+91-7217220805',
   github: 'https://github.com/Siddharth22GIT',
   linkedin: 'https://www.linkedin.com/in/-siddharthmishra/',
-  x: 'https://x.com/sidmishrx',
 }
 
 export const navTargets: { id: SectionId; label: string }[] = [
   { id: SectionId.About, label: 'About' },
-  { id: SectionId.Tech, label: 'Tech' },
+  { id: SectionId.Tech, label: 'Skills' },
+  { id: SectionId.Experience, label: 'Experience' },
+  { id: SectionId.OpenSource, label: 'Open Source' },
   { id: SectionId.Projects, label: 'Projects' },
-  { id: SectionId.Creative, label: 'Creative' },
+  { id: SectionId.Credentials, label: 'Education' },
   { id: SectionId.Contact, label: 'Contact' },
 ]
-
-

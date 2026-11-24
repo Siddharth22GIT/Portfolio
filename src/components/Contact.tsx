@@ -78,8 +78,9 @@ export const Contact: React.FC<SectionProps> = ({ id }) => {
         <div className="grid gap-6 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
           <div className="space-y-4 text-sm text-slate-600 dark:text-slate-300">
             <p>
-              From functional apps to clean edits, I create work that&apos;s
-              deliberate, sharp, and built with intent.
+              Open to software engineering internships, full-stack projects, and
+              open-source collaborations. Reach out directly via email, phone, or
+              my developer profiles.
             </p>
             <div className="space-y-2 text-xs">
               <a
@@ -90,19 +91,21 @@ export const Contact: React.FC<SectionProps> = ({ id }) => {
                   <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
                   Email
                 </span>
-                <span className="text-[11px] font-medium">Email Me</span>
+                <span className="text-[11px] font-medium">
+                  {contactLinks.emailAddress}
+                </span>
               </a>
               <a
-                href={contactLinks.github}
-                target="_blank"
-                rel="noreferrer"
+                href={contactLinks.phone}
                 className="flex items-center justify-between rounded-2xl bg-slate-50 px-3 py-2 text-slate-700 shadow-sm transition hover:bg-white dark:bg-slate-900/80 dark:text-slate-100 dark:hover:bg-slate-900"
               >
                 <span className="inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-slate-900 dark:bg-slate-50" />
-                  GitHub
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                  Mobile
                 </span>
-                <span className="text-[11px] font-medium">View Profile</span>
+                <span className="text-[11px] font-medium">
+                  {contactLinks.phoneDisplay}
+                </span>
               </a>
               <a
                 href={contactLinks.linkedin}
@@ -117,16 +120,16 @@ export const Contact: React.FC<SectionProps> = ({ id }) => {
                 <span className="text-[11px] font-medium">Connect</span>
               </a>
               <a
-                href={contactLinks.x}
+                href={contactLinks.github}
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center justify-between rounded-2xl bg-slate-50 px-3 py-2 text-slate-700 shadow-sm transition hover:bg-white dark:bg-slate-900/80 dark:text-slate-100 dark:hover:bg-slate-900"
               >
                 <span className="inline-flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-slate-900 dark:bg-slate-50" />
-                  X
+                  GitHub
                 </span>
-                <span className="text-[11px] font-medium">Follow</span>
+                <span className="text-[11px] font-medium">View Profile</span>
               </a>
             </div>
           </div>

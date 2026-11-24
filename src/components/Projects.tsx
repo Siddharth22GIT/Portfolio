@@ -29,7 +29,7 @@ export const Projects: React.FC<SectionProps> = ({ id }) => {
               id="projects-heading"
               className="mt-1 text-lg font-semibold text-slate-900 sm:text-xl dark:text-slate-50"
             >
-              Selected work
+              Featured engineering work
             </h2>
           </div>
         </div>
@@ -40,28 +40,48 @@ export const Projects: React.FC<SectionProps> = ({ id }) => {
               key={project.title}
               whileHover={{ y: -4 }}
               transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-              className="group flex flex-col justify-between rounded-3xl border border-slate-100/80 bg-slate-50/90 p-4 shadow-soft backdrop-blur dark:border-slate-700/80 dark:bg-slate-900/80"
+              className="group flex flex-col justify-between rounded-3xl border border-slate-100/80 bg-slate-50/90 p-5 shadow-soft backdrop-blur dark:border-slate-700/80 dark:bg-slate-900/80"
             >
               <div>
-                <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-50">
-                  {project.title}
-                </h3>
-                <p className="mt-2 text-xs leading-relaxed text-slate-600 dark:text-slate-300">
-                  {project.description}
-                </p>
+                <div className="flex items-start justify-between gap-2">
+                  <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-50">
+                    {project.title}
+                  </h3>
+                  <span className="shrink-0 rounded-full bg-white/90 px-2.5 py-0.5 text-[11px] font-medium text-slate-500 shadow-sm dark:bg-slate-800 dark:text-slate-300">
+                    {project.date}
+                  </span>
+                </div>
+
+                <ul className="mt-3 space-y-2 text-xs leading-relaxed text-slate-600 dark:text-slate-300">
+                  {project.highlights.map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500/80" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {project.tech.map((techItem) => (
+                    <span
+                      key={techItem}
+                      className="rounded-xl bg-white/90 px-2.5 py-1 text-[11px] font-medium text-slate-600 shadow-sm dark:bg-slate-800/90 dark:text-slate-300"
+                    >
+                      {techItem}
+                    </span>
+                  ))}
+                </div>
               </div>
 
               <div className="mt-4 flex gap-2 text-xs font-medium">
-                {project.demoUrl && (
-                  <a
-                    href={project.demoUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex flex-1 items-center justify-center rounded-2xl bg-slate-900 px-3 py-2 text-white shadow-sm transition hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200"
-                  >
-                    Demo
-                  </a>
-                )}
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex flex-1 items-center justify-center rounded-2xl bg-slate-900 px-3 py-2 text-white shadow-sm transition hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200"
+                >
+                  Live Demo
+                </a>
               </div>
             </motion.article>
           ))}

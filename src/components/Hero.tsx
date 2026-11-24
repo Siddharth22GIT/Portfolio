@@ -28,12 +28,12 @@ export const Hero: React.FC<HeroProps> = ({ id }) => {
         <div className="space-y-8">
           <div className="inline-flex items-center gap-2 rounded-2xl border border-white/60 bg-white/70 px-3 py-1 text-xs font-medium text-slate-600 shadow-sm backdrop-blur dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-300">
             <span className="h-2 w-2 rounded-full bg-emerald-400" />
-            <span>Available for internships & collaborations</span>
+            <span>{profile.status}</span>
           </div>
 
           <div className="space-y-4">
             <p className="text-sm font-medium uppercase tracking-[0.28em] text-slate-500 dark:text-slate-400">
-              Software Developer • ML • LLMs
+              {profile.title}
             </p>
             <h1 className="text-balance text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl sm:leading-tight md:text-6xl dark:text-slate-50">
               {profile.name}
@@ -58,14 +58,18 @@ export const Hero: React.FC<HeroProps> = ({ id }) => {
             </button>
           </div>
 
-          <div className="flex flex-wrap gap-4 text-xs text-slate-500 dark:text-slate-400">
-            <span className="inline-flex items-center gap-1 rounded-full bg-white/70 px-3 py-1 shadow-sm backdrop-blur dark:bg-slate-900/70">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
-              NextJS, React, Node.js, Flask, FastAPI
-            </span>
-            <span className="inline-flex items-center gap-1 rounded-full bg-white/70 px-3 py-1 shadow-sm backdrop-blur dark:bg-slate-900/70">
-              DaVinci Resolve • Motion Design
-            </span>
+          <div className="flex flex-wrap gap-3 text-xs text-slate-500 dark:text-slate-400">
+            {profile.badges.map((badge, index) => (
+              <span
+                key={badge}
+                className="inline-flex items-center gap-1.5 rounded-full bg-white/70 px-3 py-1 shadow-sm backdrop-blur dark:bg-slate-900/70"
+              >
+                {index === 0 && (
+                  <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
+                )}
+                {badge}
+              </span>
+            ))}
           </div>
         </div>
 
@@ -85,51 +89,51 @@ export const Hero: React.FC<HeroProps> = ({ id }) => {
                     Snapshot
                   </p>
                   <p className="text-sm font-semibold text-slate-900 dark:text-slate-50">
-                    Full Stack & Creative
+                    Full Stack &amp; Open Source
                   </p>
                 </div>
                 <div className="flex gap-2">
                   <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-slate-900 text-xs font-semibold text-white shadow-soft">
-                    R
+                    TS
                   </span>
                   <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-slate-800 text-xs font-semibold text-white shadow-soft">
-                    F
+                    JS
                   </span>
                 </div>
               </div>
 
               <div className="space-y-3">
                 <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-slate-500 dark:text-slate-300">
-                  STACK
+                  CORE STACK
                 </p>
                 <div className="grid grid-cols-2 gap-3 text-xs text-slate-700 dark:text-slate-100/90">
                   <div className="rounded-2xl bg-slate-100/90 p-3 dark:bg-slate-900/70">
                     <p className="text-[11px] font-medium text-slate-700 dark:text-slate-200">
-                      Backend
+                      Backend &amp; Data
                     </p>
                     <p className="mt-1 text-[11px] leading-relaxed text-slate-600 dark:text-slate-200">
-                      Node.js • Express • NextJS
+                      Node.js • Express • Flask
                       <br />
-                      Python • Flask • FastAPI
+                      Socket.IO • MongoDB • SQL
                     </p>
                   </div>
                   <div className="rounded-2xl bg-slate-100/90 p-3 dark:bg-slate-900/70">
                     <p className="text-[11px] font-medium text-slate-700 dark:text-slate-200">
-                      Frontend
+                      Frontend &amp; CS
                     </p>
                     <p className="mt-1 text-[11px] leading-relaxed text-slate-600 dark:text-slate-200">
-                      React • Vite
+                      React • Next.js • Tailwind
                       <br />
-                      Tailwind CSS
+                      C++ • Java • Python
                     </p>
                   </div>
                 </div>
               </div>
 
               <div className="flex items-center justify-between text-[11px] text-slate-600 dark:text-slate-200">
-                <span>DaVinci Resolve • Motion</span>
+                <span>@gotocodes • 10K+ Devs</span>
                 <span className="rounded-full bg-slate-900 px-2 py-1 text-[10px] font-medium text-slate-50 dark:bg-slate-50 dark:text-slate-900">
-                  Clean • Precise
+                  SIH Winner
                 </span>
               </div>
             </div>
@@ -139,5 +143,3 @@ export const Hero: React.FC<HeroProps> = ({ id }) => {
     </section>
   )
 }
-
-
