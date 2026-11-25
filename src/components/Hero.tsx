@@ -134,13 +134,19 @@ export const Hero: React.FC<HeroProps> = ({ id }) => {
             <button
               type="button"
               onClick={() => scrollTo(SectionId.Contact)}
-              className="group flex w-full items-center justify-between border border-white/25 bg-neutral-950/95 p-3 pl-5 text-left transition hover:border-white sm:max-w-[260px]"
+              className="group relative flex w-full items-center justify-between overflow-hidden border border-white/25 bg-neutral-950/95 p-3 pl-5 text-left transition-colors duration-300 hover:border-white active:scale-[0.98] sm:max-w-[260px]"
             >
-              <span className="font-display text-sm font-bold uppercase tracking-[0.18em] text-white">
+              <span
+                aria-hidden
+                className="absolute inset-0 origin-left scale-x-0 bg-white transition-transform duration-300 ease-out group-hover:scale-x-100"
+              />
+              <span className="relative z-10 font-display text-sm font-bold uppercase tracking-[0.18em] text-white transition-colors duration-300 group-hover:text-[#0a0a0a]">
                 BOTHER ME
               </span>
-              <span className="flex h-10 w-10 items-center justify-center bg-white text-sm font-bold text-[#0a0a0a] transition-transform group-hover:translate-x-0.5">
-                →
+              <span className="relative z-10 flex h-10 w-10 items-center justify-center bg-white text-sm font-bold text-[#0a0a0a] transition-colors duration-300 group-hover:bg-[#0a0a0a] group-hover:text-white">
+                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
               </span>
             </button>
           </motion.div>
@@ -150,19 +156,37 @@ export const Hero: React.FC<HeroProps> = ({ id }) => {
       {/* Monochrome tech/open-source bar at bottom of hero */}
       <div className="border-t border-white/15 bg-white text-[#0a0a0a]">
         <div className="mx-auto flex max-w-[1440px] flex-col gap-3 px-4 py-5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-6 sm:px-6 md:px-12 md:py-6">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-500 sm:text-[11px]">
+          <motion.p
+            initial={{ opacity: 0, x: -12 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.45 }}
+            className="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-500 sm:text-[11px]"
+          >
             CORE STACK &amp; OPEN SOURCE
-          </p>
+          </motion.p>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-display text-xs font-bold uppercase tracking-tight text-[#0a0a0a] sm:gap-x-8 sm:text-base">
-            <span>React</span>
-            <span>Next.js</span>
-            <span>Node.js</span>
-            <span>TypeScript</span>
-            <span>Socket.IO</span>
-            <span>MongoDB</span>
-            <span>Docker</span>
-            <span>Cockpit</span>
-            <span>React-Bootstrap</span>
+            {[
+              'React',
+              'Next.js',
+              'Node.js',
+              'TypeScript',
+              'Socket.IO',
+              'MongoDB',
+              'Docker',
+              'Cockpit',
+              'React-Bootstrap',
+            ].map((item, idx) => (
+              <motion.span
+                key={item}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.4, delay: idx * 0.04 }}
+              >
+                {item}
+              </motion.span>
+            ))}
           </div>
         </div>
       </div>
