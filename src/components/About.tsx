@@ -74,10 +74,8 @@ export const About: React.FC<AboutProps> = ({ id }) => {
                 className="h-full w-full scale-105 object-cover object-center transition-transform duration-700 hover:scale-110"
               />
             </div>
-            <div className="mt-4 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.15em] text-neutral-500">
-              <span>B.Tech CSE • LPU</span>
-              <span>•</span>
-              <span>2024 – 2028</span>
+            <div className="mt-4 text-[11px] font-semibold uppercase tracking-[0.15em] text-neutral-500">
+              <span>Full-Stack Developer</span>
             </div>
           </motion.div>
 

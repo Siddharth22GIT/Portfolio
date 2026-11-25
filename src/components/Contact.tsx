@@ -27,14 +27,29 @@ export const Contact: React.FC<SectionProps> = ({ id }) => {
     setError(null)
 
     try {
-      const res = await fetch('http://localhost:4000/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message }),
-      })
+      const res = await fetch(
+        `https://formsubmit.co/ajax/${contactLinks.emailAddress}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            message,
+            _subject: `New Portfolio Message from ${name}`,
+            _replyto: email,
+            _template: 'table',
+            _captcha: 'false',
+          }),
+        },
+      )
 
-      if (!res.ok) {
-        throw new Error('Request failed')
+      const data = await res.json().catch(() => null)
+      if (!res.ok || data?.success === 'false' || data?.success === false) {
+        throw new Error(data?.message || 'Request failed')
       }
 
       setStatus('success')
@@ -44,7 +59,9 @@ export const Contact: React.FC<SectionProps> = ({ id }) => {
     } catch (err) {
       console.error(err)
       setStatus('error')
-      setError('Something went wrong. Please try again in a moment.')
+      setError(
+        'Could not send right now. Please email siddharthmishra10e@gmail.com directly.',
+      )
     }
   }
 

@@ -127,13 +127,13 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
                   <div>
                     <p className="text-xs uppercase tracking-[0.2em] text-neutral-400">
-                      Education &amp; Location
+                      Location
                     </p>
                     <p className="mt-2 text-base font-medium text-neutral-200">
-                      Lovely Professional University, Punjab, India
+                      India
                     </p>
                     <p className="mt-1 text-sm text-neutral-400">
-                      B.Tech CSE (2024 - 2028)
+                      Full-Stack Developer &amp; Open-Source Contributor
                     </p>
                   </div>
                 </div>

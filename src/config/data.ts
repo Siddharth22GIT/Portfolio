@@ -5,7 +5,7 @@ export const profile = {
   title: 'Full-Stack Developer • Open-Source Contributor',
   tagline:
     'Building scalable web systems, real-time platforms, and developer tools — and sharing CS & engineering with a 10K+ developer community at @gotocodes.',
-  status: 'B.Tech CSE @ LPU • Open to internships & collaborations',
+  status: 'Open to internships & collaborations',
   badges: [
     'React, Next.js, Node.js, TypeScript, C++, Python',
     'Open-Source Contributor • Cockpit & React-Bootstrap',
@@ -14,12 +14,12 @@ export const profile = {
 
 export const about = {
   paragraph:
-    "I'm a Computer Science & Engineering undergraduate at Lovely Professional University focused on full-stack development, real-time systems, and accessible UI engineering.\n\nBeyond building products like IPChat, Unravel, and Where's My Bus, I contribute to major open-source projects and run @gotocodes—producing technical content on full-stack development, DSA, and career guidance for a 10K+ developer community.",
+    "I'm a Full-Stack Developer focused on scalable web systems, real-time platforms, and accessible UI engineering.\n\nBeyond building products like IPChat, Unravel, and Where's My Bus, I contribute to major open-source projects and run @gotocodes—producing technical content on full-stack development, DSA, and career guidance for a 10K+ developer community.",
   quickInfo: [
-    { label: 'Education', value: 'B.Tech CSE • LPU' },
+    { label: 'Location', value: 'India' },
     { label: 'Focus', value: 'Full Stack & Real-Time Systems' },
     { label: 'Open Source', value: 'Cockpit & React-Bootstrap' },
-    { label: 'Community', value: '@gotocodes (10K+ Devs)' },
+    { label: 'Founder', value: '@gotocodes (10K+ Devs)' },
   ],
 }
 
