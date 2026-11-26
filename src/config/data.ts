@@ -245,18 +245,6 @@ export const education: EducationItem[] = [
     score: '',
     period: '2024 - 2028',
   },
-  {
-    institution: 'Army Public School, Roorkee, Uttarakhand',
-    degree: 'Class XII',
-    score: 'Percentage: 78%',
-    period: 'April 2022 - April 2023',
-  },
-  {
-    institution: 'Army Public School, Roorkee, Uttarakhand',
-    degree: 'Class X',
-    score: 'Percentage: 94.8%',
-    period: 'April 2020 - April 2021',
-  },
 ]
 
 export const creativeSkills = [
