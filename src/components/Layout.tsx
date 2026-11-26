@@ -103,18 +103,6 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <div className="space-y-6 md:space-y-8">
                   <div>
                     <p className="text-xs uppercase tracking-[0.2em] text-neutral-400">
-                      Mobile
-                    </p>
-                    <a
-                      href={contactLinks.phone}
-                      className="mt-2 block font-display text-xl font-semibold text-white hover:underline sm:text-2xl"
-                    >
-                      {contactLinks.phoneDisplay}
-                    </a>
-                  </div>
-
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.2em] text-neutral-400">
                       Email
                     </p>
                     <a
