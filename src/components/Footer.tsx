@@ -22,12 +22,6 @@ export const Footer: React.FC = () => {
             </p>
             <div>
               <a
-                href={contactLinks.phone}
-                className="block text-xs font-medium text-neutral-600 hover:text-black"
-              >
-                {contactLinks.phoneDisplay}
-              </a>
-              <a
                 href={contactLinks.email}
                 className="mt-1 block break-all font-display text-base font-bold text-[#0a0a0a] hover:underline sm:text-lg"
               >

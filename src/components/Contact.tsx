@@ -186,19 +186,7 @@ export const Contact: React.FC<SectionProps> = ({ id }) => {
                   </span>
                 </a>
               </RevealItem>
-              <RevealItem delay={0.14}>
-                <a
-                  href={contactLinks.phone}
-                  className="group flex items-center justify-between py-3.5 transition-colors hover:text-neutral-300"
-                >
-                  <span className="uppercase tracking-[0.16em] text-neutral-400">
-                    Mobile
-                  </span>
-                  <span className="font-medium text-white transition-transform duration-200 group-hover:translate-x-1">
-                    {contactLinks.phoneDisplay} ↗
-                  </span>
-                </a>
-              </RevealItem>
+
               <RevealItem delay={0.18}>
                 <a
                   href={contactLinks.linkedin}

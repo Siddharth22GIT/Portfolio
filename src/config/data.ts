@@ -270,8 +270,6 @@ export const creativeSkills = [
 export const contactLinks = {
   email: 'mailto:siddharthmishra10e@gmail.com',
   emailAddress: 'siddharthmishra10e@gmail.com',
-  phone: 'tel:+917217220805',
-  phoneDisplay: '+91-7217220805',
   github: 'https://github.com/Siddharth22GIT',
   linkedin: 'https://www.linkedin.com/in/-siddharthmishra/',
 }
